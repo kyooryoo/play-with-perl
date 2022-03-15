@@ -4,12 +4,11 @@ print "Hello, world!\n";
 # join strings with .
 print "Hello, "."again!\n";
 # string repetition
-print "fred x 3: ".("fred "x3)."\n";
-print "5 x 4: ".(5x4)."\n\n";
+print "fred x 3: ".("fred " x 3)."\n";
+print "5 x 4: ".(5 x 4)."\n\n";
 
 print "1.25: ".1.25."\n";
-print "255.00: ".255.00."\n";
-print "7.25e3: ".7.25e3."\n";
+print "1.25e2: ".1.25e2."\n";
 print "-6.5e2: ".-6.5e2."\n";
 print "-1.2E-2: ".-1.2E-2."\n";
 # for better human readability
@@ -57,7 +56,15 @@ print "\\U - next all chars in upper case\n";
 print "\Ufred's cat\n";
 print "\\Q - add \\ to special chars\n";
 print "\Qfred's cat"."\n";
-# use var in double quotation marks
-@var = "fred";
-print '@var = "fred"'."\n";
-print '@var: '."@var\n";
+
+$fred = "fred";
+$Fred = "brontosaurus steak";
+# perl cares about char case
+print "$fred likes $Fred\n";
+# if needs to print a standalone var
+print "Works: ", "$Fred", "\n";
+print "Better: ", $Fred, "\n";
+# what if mix var with chars
+print "How about \$Freds: $Freds?\n";
+print "Should be \${Fred}s: ${Fred}s\n";
+print "Or \$Fred.\"s\": $Fred"."s\n";
