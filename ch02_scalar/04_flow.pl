@@ -13,12 +13,30 @@ $line = <STDIN>;
 if ($line eq "\n") {
     print "That was just a blank line!\n";
 } else {
-    print "A line break is added by default for '$line'";
+    print "A line break is added by default for: $line";
 }
 
 $text = <STDIN>;
 # remove new line character inplace of the variable
-$chropped = chomp($text);
-if ($chropped) {
+# chomp() returns 1 if there is \n chompped
+$chompped = chomp($text);
+if ($chompped) {
     print "Add new line manually for '$text'.\n";
+}
+# this time there should be nothing chompped
+$chompped = chomp($text);
+if (!$chompped) {
+    print "Not have anything chompped for '$text'.\n";
+}
+
+$count = 0;
+while ($count < 10) {
+    $count += 1;
+    print "Count is now $count\n";
+}
+
+if ( defined($madonna) ) {
+    print "The input was $madonna\n";
+} else {
+    print "No input available!\n";
 }
