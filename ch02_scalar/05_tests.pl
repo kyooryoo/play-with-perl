@@ -16,3 +16,13 @@ chomp($a = <STDIN>);
 chomp($b = <STDIN>);
 $result = $a * $b;
 print "multipy $a with $b gets $result\n\n";
+
+print "input the text you want to print:\n";
+$text = <STDIN>;
+print "input the number of times you want to print:\n";
+chomp($times = <STDIN>);
+print "here is the output:\n"
+while ($times > 0) {
+    print "$text";
+    $times--;
+}
