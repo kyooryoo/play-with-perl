@@ -65,35 +65,35 @@ pop @rocks;
 print "The final result of \@rocks is: @rocks\n\n";
 
 # push adds item to the end of an array
-push(@rocks, 0);
-print "Pushed 0: @rocks\n";
-push @rocks, 8;
-print "Pushed 8: @rocks\n";
-push @rocks, 5..9;
-print "Pushed 5..9: @rocks\n";
+push(@numbers, 0);
+print "Pushed 0: @numbers\n";
+push @numbers, 8;
+print "Pushed 8: @numbers\n";
+push @numbers, 5..9;
+print "Pushed 5..9: @numbers\n";
 @others = qw^ 3 4 5 ^;
-push @rocks, @others;
-print "Pushed @others: @rocks\n\n";
+push @numbers, @others;
+print "Pushed @others: @numbers\n\n";
 
 # shift removes and returns the heading item in an array
-$talc = shift(@rocks);
-print "shift $talc from \@rocks got: @rocks\n";
-$a = shift @rocks;
-print "now shift $a from \@rocks got: @rocks\n";
-shift @rocks;
-print "after another shift got:@rocks\n";
-unshift(@rocks, 1);
-print "after unshift 1 got: @rocks\n";
-unshift @rocks, 2;
-print "after unshift 2 got: @rocks\n";
-unshift @rocks, @others;
-print "after unshift @others got: @rocks\n\n";
+$talc = shift(@numbers);
+print "shift $talc from \@numbers got: @numbers\n";
+$a = shift @numbers;
+print "now shift $a from \@numbers got: @numbers\n";
+shift @numbers;
+print "after another shift got:@numbers\n";
+unshift(@numbers, 1);
+print "after unshift 1 got: @numbers\n";
+unshift @numbers, 2;
+print "after unshift 2 got: @numbers\n";
+unshift @numbers, @others;
+print "after unshift @others got: @numbers\n\n";
 
 # be careful about using array in a string
-$rocks[3] = "wrong";
-$rocks = "right";
+$array[3] = "wrong";
+$array = "right";
 # if we want to print string: right[3]
-print "\$rocks[3]: $rocks[3]\n";
-print "\${rocks}[3]: ${rocks}[3]\n";
-print "'\$rocks'.'[3]': $rocks"."[3]\n";
-print "\$rocks\\[3]: $rocks\[3]\n\n";
+print "\$array[3]: $array[3]\n";
+print "\${array}[3]: ${array}[3]\n";
+print "'\$array'.'[3]': $array"."[3]\n";
+print "\$array\\[3]: $array\[3]\n\n";
