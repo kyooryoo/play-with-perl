@@ -29,11 +29,11 @@ print "one to ten: @one2ten\n";
 @rev1to10 = reverse(@one2ten);
 print "rev 1 to 10: @rev1to10\n";
 # reverse a..b
-@ten2one = reverse 1..10;
-print "ten to one: @ten2one\n";
+@f2a = reverse a..f;
+print "F to A: @f2a\n";
 # reverse @array
-@rev10to1 = reverse @ten2one;
-print "rev 10 to 1: @rev10to1\n\n";
+@revFtoA = reverse @f2a;
+print "rev F to A: @revFtoA\n\n";
 
 # sort an array as strings in different ways
 @rocks = qw@ bedrock slate rubble granite @;
@@ -43,3 +43,21 @@ print "Sorted rocks: @sorted\n";
 print "Back sorted: @back\n";
 @suprise = sort 97..103;
 print "Expected sorting? @suprise\n\n";
+
+# context is important in Perl
+@people = qw# fred barney betty #;
+# context expects for an array
+@sorted = sort @people;
+print "sort context got: @sorted\n";
+# context expects for a scalar
+$number = 5 + @people;
+print "add context got: $number\n";
+# use scalar to force scalar context
+print "we have ", scalar @people, " people.\n\n";
+# <STDIN> also follows context rule
+print "scalar context with STDIN:\n";
+chomp($input = <STDIN>);
+print "your input is: $input\n\n";
+print "list context, stop input with ctrl+D:\n";
+chomp(@input = <STDIN>);
+print "your input is: @input\n\n";

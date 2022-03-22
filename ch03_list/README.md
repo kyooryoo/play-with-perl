@@ -36,3 +36,44 @@
 需要留意在字符串中引用数组的操作，例如 "@rocks"  
 如果同时存在 "@rocks" 和 "$rocks" 用 *{}* 标记变量。  
 或者也可用 '' 来单独标记变量，或用 \ 逃逸变量后的 [] 符号。  
+
+遍历数组可以用 *foreach $item (@array)* 方法。  
+变量 *$item* 即数组元素，可以在循环体中直接对其修改。  
+如果不指定 *$item* ，和其他函数一样，缺省变量可以用 *$_*。  
+
+对数组进行排序或倒序操作使用 *sort* 和 *reverse* 方法。  
+注意 *sort* 方法按字符串方式排序，所以 101 排在 99 之后。  
+另外 *sort* 方法只返回倒序处理结果，并不修改原来的数组。  
+而 *reverse* 方法可以弥补 x..z 自动序列不支持倒序的不足。  
+
+## 上下文
+因为十分重要，所以这里独立出来强调一下代码上下文的意义：  
+即一个给定的表达式在不同地方会具有不同的意义，例如：  
+* 5 + somevar：Perl 会尝试把 somevar 解释为一个标量  
+* sort + somevar：Perl 会尝试把 somevar 解释为一个数组
+
+以下上下文情况下默认 *something* 为标量：  
+* $fred = something
+* $fred[3] = something
+* 123 + something
+* if (something) {...}
+* while (something) {...}
+* $fred[something] = something
+
+以下上下文情况下默认 *something* 为列表：  
+* @fred = something
+* ($fred, $barney) = something
+* ($fred) = something
+* push @fred, something
+* foreach $fred (something) {...}
+* sort something
+* reverse something
+* print something
+
+需要注意的是单元素列表依然为列表，如：@fred = 6 * 7  
+清空列表用 *()* 而不是 *undef* 因为后者生成单元素列表。  
+如果需要强制使用标量上下文，可用 *scalar* 假函数。  
+
+上下文的另一个特殊用例是标准输入接口 *<STDIN>*  
+列表上下文中他会按行读取用户输入，直到按下 Ctrl+D 或 Z  
+读入所有行输入，不带换行符：`chomp(@lines=<STDIN>)`  
