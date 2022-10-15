@@ -7,6 +7,3 @@ Prel 可以用于各种规模的程序，特别适合处理文本数据，但不
 * [Perl Mongers](https://www.pm.org/)
 * [Perl Monks](https://www.perlmonks.org/index.pl?)
 * [News Group](http://www.faqs.org/faqs/perl-faq/moderated/welcome/)
-
-
-

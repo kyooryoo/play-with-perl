@@ -1,11 +1,14 @@
 #!/usr/bin/perl
+# use warnings;
+# use diagnostics;
 
 print "Hello, world!\n";
 # join strings with .
 print "Hello, "."again!\n";
 # string repetition
 print "fred x 3: ".("fred " x 3)."\n";
-print "5 x 4: ".(5 x 4)."\n\n";
+print "5 x 4.8: ".(5x4.8)."\n";
+print "fred x 0.8: ".("fred" x 0.8)."\n\n";
 
 print "1.25: ".1.25."\n";
 print "1.25e2: ".1.25e2."\n";
@@ -24,19 +27,41 @@ print "3 * 12: ".(3*12)."\n";
 print "10 / 3: ".(10/3)."\n";
 # 10.1 % 3.9 = 10 % 3
 print "10.1 % 3.9: ".(10.1%3.9)."\n";
+# notice the following result might be unexpected
+# it results 2 because -10 is 2 above -12
+print "-10 % 3: ".(-10%3)."\n";
+# following result of -1 might be expected
+print "-10 % -3: ".(-10%-3)."\n\n";
+
+print "Some special chars: "."☃★๛⅚∞☃☠"."\n\n";
 
 print 'fred'."\n";
 print "fred\n";
-print 'fred\n'."\n";
-print "fred\\n\n";
+# \n is not translated within single quotation
+print 'fred \n cat'."\n";
+# a literal new line will be preserved in single quotation
+print 'fred (a new line here)
+cat'."\n";
+# \' is translated to ' in single quotation - exception
 print 'fred\'s cat'."\n";
-print "fred\'s cat\n";
+# \\ is translated to \ in single quotation - exception
+print 'fred \\ cat'."\n\n";
 
-print "\\r - return\n";
-print "fred's\r cat\n";
-print "\\t - table\n";
+print "\x{2668}"."\n"; # Unicode hot springs char by code
+print "\N{SNOWMAN}"."\n\n"; # Unicode snowman char by name
+
+print "0377 * 2: ".(0377 * 2)."\n"; # this 0377 is an oct number
+print "'0377' * 2: ".('0377' * 2)."\n"; # this '0377' is a decimal number
+# following line of code will cause warnings
+print "'123abc' + '1': ".('123abc' + '1')."\n"; # auto match to numbers
+
+# while a lot of translations work with double quotation
+print "\\r - return\n"; # new line
+print "fred's\r cat\n"; # the first line is lost
+print "\\t - table\n"; # tabs
 print "fred's\t cat\n";
-print "\\f - new page\n";
+# a new line and continues from the very position
+print "\\f - new page (LOOK OUT!)\n";
 print "fred's\f cat\n";
 print "\\b - back\n";
 print "fred's\b cat\n";
